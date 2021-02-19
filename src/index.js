@@ -1,36 +1,16 @@
 // import libraries
 import React from "react";
 import ReactDOM from "react-dom";
-import Faker from "faker";
-
+import ContentDetails from "./ContentDetails";
 // create a react component
 const App = () => {
   return (
-    <div class="ui feed">
-      <div class="event">
-        <div class="label">
-          <img src={Faker.image.image()} />
-        </div>
-        <div class="content">
-          You added {Faker.name.lastName()} to the group <a>Coworkers</a>
-        </div>
-      </div>
-      <div class="event">
-        <div class="label">
-          <img src={Faker.image.image()} />
-        </div>
-        <div class="content">
-          You added {Faker.name.lastName()} to the group <a>Coworkers</a>
-        </div>
-      </div>
-      <div class="event">
-        <div class="label">
-          <img src={Faker.image.image()} />
-        </div>
-        <div class="content">
-          You added {Faker.name.lastName()} to the group <a>Coworkers</a>
-        </div>
-      </div>
+    <div className="ui feed">
+      {/* send props (propName = propValue) from parent (App) to child (content) like below */}
+      <ContentDetails name="rohith" />
+      <ContentDetails name="dikshith" />
+      <ContentDetails name="sai" />
+      <ContentDetails name="kishore" />
     </div>
   );
 };
