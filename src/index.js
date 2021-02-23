@@ -8,6 +8,8 @@ class App extends React.Component {
   // Updating a state will cause the rerender of component
   // state must be updated only using setState() method only
 
+  // A state initialisation can be done in different ways , one of them is as :
+  // inside a constructor , it should call super (which is parent class) and initialise state as below:
   constructor(props) {
     super(props);
     this.state = { data: "Its me dude" };
