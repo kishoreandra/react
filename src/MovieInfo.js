@@ -5,7 +5,7 @@ const MovieInfo = (props) => {
   return (
     <div className="item">
       <div className="image">
-        <img src={Faker.image.image()} />
+        <img src={props.image} />
       </div>
       <div className="content">
         <a className="header">{props.header}</a>
