@@ -1,27 +1,37 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import SeasonDisplay from "./SeasonDisplay";
+import Spinner from "./Spinner";
 
-// The class must be a JS class and should extending React.Component parent class
-// The class must have a render method which gets called on creating an App instance
 class App extends React.Component {
-  // A state is a JS object that has data relevant to the component
-  // Updating a state will cause the rerender of component
-  // state must be updated only using setState() method only
-
-  // A state initialisation can be done in different ways , one of them is as :
-  // inside a constructor , it should call super (which is parent class) and initialise state as below:
   constructor(props) {
     super(props);
-    this.state = { data: "Its me dude" };
+    this.state = {
+      latitude: null,
+      errMsg: "",
+    };
+
+    navigator.geolocation.getCurrentPosition(
+      // update state using setState
+      (pos) => this.setState({ latitude: pos.coords.latitude }),
+      (err) => {
+        this.setState({ errMsg: err.message });
+      }
+    );
+  }
+
+  showSeason() {
+    if (this.state.errMsg && !this.state.latitude) {
+      return <SeasonDisplay latitude={this.state.errMsg} />;
+    }
+    if (!this.state.errMsg && this.state.latitude) {
+      return <SeasonDisplay latitude={this.state.latitude} />;
+    }
+    return <Spinner message="Please Allow Location !!" />;
   }
 
   render() {
-    return (
-      <div>
-        {/* refer the value of state as below : */}
-        <h1>Hi there and {this.state.data} ... I am a class based component</h1>
-      </div>
-    );
+    return this.showSeason();
   }
 }
 
