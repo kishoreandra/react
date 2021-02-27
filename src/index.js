@@ -22,7 +22,7 @@ class App extends React.Component {
 
   showSeason() {
     if (this.state.errMsg && !this.state.latitude) {
-      return <SeasonDisplay latitude={this.state.errMsg} />;
+      return `Error : ${this.state.errMsg}`;
     }
     if (!this.state.errMsg && this.state.latitude) {
       return <SeasonDisplay latitude={this.state.latitude} />;
