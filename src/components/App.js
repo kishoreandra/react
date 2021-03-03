@@ -1,7 +1,7 @@
-import { render } from "@testing-library/react";
 import React from "react";
 import axios from "axios";
 import SearchBar from "./SearchBar";
+import ImageList from "./ImageList";
 
 class App extends React.Component {
   state = { results: [] };
@@ -20,7 +20,7 @@ class App extends React.Component {
     return (
       <div className="ui container" style={{ marginTop: "10px" }}>
         <SearchBar onSubmit={this.onSearchSubmit} />
-        Found : {this.state.results.length} results
+        <ImageList images={this.state.results} />
       </div>
     );
   }
