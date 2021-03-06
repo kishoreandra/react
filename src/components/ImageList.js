@@ -1,9 +1,10 @@
 import "./ImageList.css";
 import React from "react";
+import ImageGrid from "./ImageGrid";
 
 const ImageList = (props) => {
-  const images = props.images.map(({ id, urls, description }) => {
-    return <img key={id} src={urls.regular} alt={description}></img>;
+  const images = props.images.map((image) => {
+    return <ImageGrid key={image.id} image={image} />;
   });
   return <div className="image-list">{images}</div>;
 };
